@@ -9,6 +9,10 @@ let micAllowed = 1;
 let camAllowed = 1;
 
 let mediaConstraints = { video: true, audio: true };
+navigator.getUserMedia  = navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.mozGetUserMedia ||
+                          navigator.msGetUserMedia;
 
 navigator.mediaDevices.getUserMedia(mediaConstraints)
     .then(localstream => {
@@ -85,6 +89,7 @@ cam.addEventListener('click', () => {
         camAllowed = 1;
     }
 })
+
 
 mic.addEventListener('click', () => {
     if (micAllowed) {
